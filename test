@@ -1,0 +1,10 @@
+#!/bin/bash
+temp=tmp
+testReport=$temp/test-report.html
+if ! [[ -d $temp ]]; then
+	mkdir $temp
+fi
+
+vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap.php application/tests | tee $testReport
+echo "# view report at $testReport"
+
